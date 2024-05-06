@@ -1,0 +1,88 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include "{}SDL.\+h"{}}\newline
+{\ttfamily \#include "{}SDL\+\_\+ttf.\+h"{}}\newline
+{\ttfamily \#include "{}planets.\+h"{}}\newline
+{\ttfamily \#include "{}Planetary\+System.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_ac4b252e8c66ae40c67d81aa74fb61d9a}{Draw\+Circle}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, int32\+\_\+t centreX, int32\+\_\+t centreY, int32\+\_\+t radius)
+\item 
+void \mbox{\hyperlink{main_8cpp_a73120caabc88ab9e733983156a3ab4f4}{get\+\_\+text\+\_\+and\+\_\+rect}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, int x, int y, const char \texorpdfstring{$\ast$}{*}text, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}texture, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}rect)
+\item 
+void \mbox{\hyperlink{main_8cpp_a12516cee9cbbc030b65d1b0ade2abf60}{Render\+Planets}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rend, \mbox{\hyperlink{class_planetary_system}{Planetary\+System}} \texorpdfstring{$\ast$}{*}system)
+\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+long long \mbox{\hyperlink{main_8cpp_a02d6949e5866aef7131c8f8decfec6ed}{meter\+\_\+to\+\_\+pix}} = 100\textquotesingle{}000\textquotesingle{}000
+\item 
+double \mbox{\hyperlink{main_8cpp_aa159a9837418d9e90c1d60039c20033b}{timestep}} = 1.\+0f
+\item 
+const int \mbox{\hyperlink{main_8cpp_af11020c08f4867bc17315b84ee14cd62}{direction\+\_\+count}} = 360
+\item 
+\mbox{\hyperlink{struct_vector2}{Vector2}} \mbox{\hyperlink{main_8cpp_af5cd566198f6965f92ec42bf213bd6e2}{directions}} \mbox{[}\mbox{\hyperlink{main_8cpp_af11020c08f4867bc17315b84ee14cd62}{direction\+\_\+count}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_ac4b252e8c66ae40c67d81aa74fb61d9a}\label{main_8cpp_ac4b252e8c66ae40c67d81aa74fb61d9a} 
+\index{main.cpp@{main.cpp}!DrawCircle@{DrawCircle}}
+\index{DrawCircle@{DrawCircle}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{DrawCircle()}{DrawCircle()}}
+{\footnotesize\ttfamily void Draw\+Circle (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{int32\+\_\+t}]{centreX,  }\item[{int32\+\_\+t}]{centreY,  }\item[{int32\+\_\+t}]{radius }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a73120caabc88ab9e733983156a3ab4f4}\label{main_8cpp_a73120caabc88ab9e733983156a3ab4f4} 
+\index{main.cpp@{main.cpp}!get\_text\_and\_rect@{get\_text\_and\_rect}}
+\index{get\_text\_and\_rect@{get\_text\_and\_rect}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_text\_and\_rect()}{get\_text\_and\_rect()}}
+{\footnotesize\ttfamily void get\+\_\+text\+\_\+and\+\_\+rect (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{texture,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{rect }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a12516cee9cbbc030b65d1b0ade2abf60}\label{main_8cpp_a12516cee9cbbc030b65d1b0ade2abf60} 
+\index{main.cpp@{main.cpp}!RenderPlanets@{RenderPlanets}}
+\index{RenderPlanets@{RenderPlanets}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{RenderPlanets()}{RenderPlanets()}}
+{\footnotesize\ttfamily void Render\+Planets (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rend,  }\item[{\mbox{\hyperlink{class_planetary_system}{Planetary\+System}} \texorpdfstring{$\ast$}{*}}]{system }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_af11020c08f4867bc17315b84ee14cd62}\label{main_8cpp_af11020c08f4867bc17315b84ee14cd62} 
+\index{main.cpp@{main.cpp}!direction\_count@{direction\_count}}
+\index{direction\_count@{direction\_count}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{direction\_count}{direction\_count}}
+{\footnotesize\ttfamily const int direction\+\_\+count = 360}
+
+\Hypertarget{main_8cpp_af5cd566198f6965f92ec42bf213bd6e2}\label{main_8cpp_af5cd566198f6965f92ec42bf213bd6e2} 
+\index{main.cpp@{main.cpp}!directions@{directions}}
+\index{directions@{directions}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{directions}{directions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vector2}{Vector2}} directions\mbox{[}\mbox{\hyperlink{main_8cpp_af11020c08f4867bc17315b84ee14cd62}{direction\+\_\+count}}\mbox{]}}
+
+\Hypertarget{main_8cpp_a02d6949e5866aef7131c8f8decfec6ed}\label{main_8cpp_a02d6949e5866aef7131c8f8decfec6ed} 
+\index{main.cpp@{main.cpp}!meter\_to\_pix@{meter\_to\_pix}}
+\index{meter\_to\_pix@{meter\_to\_pix}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{meter\_to\_pix}{meter\_to\_pix}}
+{\footnotesize\ttfamily long long meter\+\_\+to\+\_\+pix = 100\textquotesingle{}000\textquotesingle{}000}
+
+\Hypertarget{main_8cpp_aa159a9837418d9e90c1d60039c20033b}\label{main_8cpp_aa159a9837418d9e90c1d60039c20033b} 
+\index{main.cpp@{main.cpp}!timestep@{timestep}}
+\index{timestep@{timestep}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{timestep}{timestep}}
+{\footnotesize\ttfamily double timestep = 1.\+0f}
+

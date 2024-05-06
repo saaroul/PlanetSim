@@ -1,0 +1,32 @@
+\doxysection{Planetary\+System.\+h}
+\hypertarget{_planetary_system_8h_source}{}\label{_planetary_system_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Planet.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_planetary_system}{PlanetarySystem}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_planetary_system}{PlanetarySystem}}(\textcolor{keywordtype}{double}\ timestep)\ :\ \_dt(timestep)\ \{\};}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_planetary_system}{\string~PlanetarySystem}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_planetary_system_a28bd2c7f3961eeaba9a664a4424d2ae6}{simulate}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ setTimestep(\textcolor{keywordtype}{double}\ timestep)\ \{\ \_dt\ =\ timestep;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ getPlanetPosition(\textcolor{keywordtype}{int}\ i)\ \{\ \textcolor{keywordflow}{return}\ \_planets[i].getPos();\ \};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ getPlanetCount()\ \{\ \ \textcolor{keywordflow}{return}\ \_planets.size();\ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ addPlanet(\mbox{\hyperlink{class_planet}{Planet}}\ p)\ \{\ \_planets.push\_back(p);\ \};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ calculatePositionFor(\textcolor{keywordtype}{int}\ planet\_index);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ calculateNewPos(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ end);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ calculateAcceleration(\mbox{\hyperlink{struct_vector2}{Vector2}}\ pos,\ \textcolor{keywordtype}{int}\ planet\_index);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ updateAllPos();}
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<Planet>\ \_planets;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \_dt;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ G\ =\ 6.6743E-\/11;\ \textcolor{comment}{//\ Gravitational\ constant}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+
+\end{DoxyCode}

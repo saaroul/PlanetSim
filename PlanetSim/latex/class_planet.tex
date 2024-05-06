@@ -1,0 +1,156 @@
+\doxysection{Planet Class Reference}
+\hypertarget{class_planet}{}\label{class_planet}\index{Planet@{Planet}}
+
+
+Describes a basic celestial body.  
+
+
+
+
+{\ttfamily \#include $<$Planet.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_planet_af5c6fac0c5415f1618382e4d42e7e834}{Planet}} (std\+::string name, double mass, \mbox{\hyperlink{struct_vector2}{Vector2}} pos, \mbox{\hyperlink{struct_vector2}{Vector2}} v)
+\item 
+std\+::string \mbox{\hyperlink{class_planet_a7292ea44381bf22159740fbaa5312586}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get planet name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vector2}{Vector2}} \mbox{\hyperlink{class_planet_acca874ac5ea6e0cc576e0c57146843f3}{get\+Pos}} ()
+\begin{DoxyCompactList}\small\item\em Get planet position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_planet_a7b27d40c525db078c2218ec1007d2714}{set\+Pos}} (\mbox{\hyperlink{struct_vector2}{Vector2}} new\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Set new position for planet. Sets a new position for a planet. New position is not applied until \doxylink{class_planet_abdf74b36352a1b5739898990646d7378}{update\+Pos()} is called. \end{DoxyCompactList}\item 
+\Hypertarget{class_planet_abdf74b36352a1b5739898990646d7378}\label{class_planet_abdf74b36352a1b5739898990646d7378} 
+void {\bfseries update\+Pos} ()
+\begin{DoxyCompactList}\small\item\em Update position. Update planets position to value in \+\_\+new\+\_\+position. Must be called after using \doxylink{class_planet_a7b27d40c525db078c2218ec1007d2714}{set\+Pos()} to change actual positon of the planet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vector2}{Vector2}} \mbox{\hyperlink{class_planet_a86f73eaf537ea5774b7c185e04e7d07d}{get\+Vel}} ()
+\begin{DoxyCompactList}\small\item\em Get planet velocity. Returns planets current velocity as 2d vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_planet_a6034434f696bad5e76388837bcfa24e7}{set\+Vel}} (\mbox{\hyperlink{struct_vector2}{Vector2}} new\+\_\+v)
+\begin{DoxyCompactList}\small\item\em Set new velocity. Set new velocity for planet. New velocity is not applied until \doxylink{class_planet_a4b7929a78097c80431fd7fe5eb7ba59c}{update\+Vel()} is called. \end{DoxyCompactList}\item 
+\Hypertarget{class_planet_a4b7929a78097c80431fd7fe5eb7ba59c}\label{class_planet_a4b7929a78097c80431fd7fe5eb7ba59c} 
+void {\bfseries update\+Vel} ()
+\begin{DoxyCompactList}\small\item\em Update position. Update planets velocity to value in \+\_\+new\+\_\+velocity. Must be called after using \doxylink{class_planet_a6034434f696bad5e76388837bcfa24e7}{set\+Vel()} to change actual velocity of the planet. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_planet_a12c452482a727935da7d8a1cf6d9a6a9}{get\+Mass}} ()
+\begin{DoxyCompactList}\small\item\em Get planet mass. Returns the mass of the planet in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Describes a basic celestial body. 
+
+Describes a celestial body in a N-\/\+Body system. Body is a point mass with defined initial coordinates and velocity. Regardless of name \doxylink{class_planet}{Planet} body may describe any point mass celestial body like planets and stars. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_planet_af5c6fac0c5415f1618382e4d42e7e834}\label{class_planet_af5c6fac0c5415f1618382e4d42e7e834} 
+\index{Planet@{Planet}!Planet@{Planet}}
+\index{Planet@{Planet}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{Planet()}{Planet()}}
+{\footnotesize\ttfamily Planet\+::\+Planet (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{mass,  }\item[{\mbox{\hyperlink{struct_vector2}{Vector2}}}]{pos,  }\item[{\mbox{\hyperlink{struct_vector2}{Vector2}}}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for planet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name for planet \\
+\hline
+{\em mass} & Mass in kilos \\
+\hline
+{\em pos} & Initial position in meters on x, y coordinate system \\
+\hline
+{\em v} & Initial elocity in meters per second \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_planet_a12c452482a727935da7d8a1cf6d9a6a9}\label{class_planet_a12c452482a727935da7d8a1cf6d9a6a9} 
+\index{Planet@{Planet}!getMass@{getMass}}
+\index{getMass@{getMass}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{getMass()}{getMass()}}
+{\footnotesize\ttfamily double Planet\+::get\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get planet mass. Returns the mass of the planet in kilograms. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_planet}{Planet} mass 
+\end{DoxyReturn}
+\Hypertarget{class_planet_a7292ea44381bf22159740fbaa5312586}\label{class_planet_a7292ea44381bf22159740fbaa5312586} 
+\index{Planet@{Planet}!getName@{getName}}
+\index{getName@{getName}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Planet\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get planet name. 
+
+\begin{DoxyReturn}{Returns}
+string name of the planet 
+\end{DoxyReturn}
+\Hypertarget{class_planet_acca874ac5ea6e0cc576e0c57146843f3}\label{class_planet_acca874ac5ea6e0cc576e0c57146843f3} 
+\index{Planet@{Planet}!getPos@{getPos}}
+\index{getPos@{getPos}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vector2}{Vector2}} Planet\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get planet position. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_planet}{Planet} position 
+\end{DoxyReturn}
+\Hypertarget{class_planet_a86f73eaf537ea5774b7c185e04e7d07d}\label{class_planet_a86f73eaf537ea5774b7c185e04e7d07d} 
+\index{Planet@{Planet}!getVel@{getVel}}
+\index{getVel@{getVel}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{getVel()}{getVel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vector2}{Vector2}} Planet\+::get\+Vel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get planet velocity. Returns planets current velocity as 2d vector. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_planet}{Planet} velocity 
+\end{DoxyReturn}
+\Hypertarget{class_planet_a7b27d40c525db078c2218ec1007d2714}\label{class_planet_a7b27d40c525db078c2218ec1007d2714} 
+\index{Planet@{Planet}!setPos@{setPos}}
+\index{setPos@{setPos}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Planet\+::set\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vector2}{Vector2}}}]{new\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set new position for planet. Sets a new position for a planet. New position is not applied until \doxylink{class_planet_abdf74b36352a1b5739898990646d7378}{update\+Pos()} is called. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_planet_abdf74b36352a1b5739898990646d7378}{update\+Pos()} 
+
+\+\_\+new\+\_\+pos
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+pos} & New position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_planet_a6034434f696bad5e76388837bcfa24e7}\label{class_planet_a6034434f696bad5e76388837bcfa24e7} 
+\index{Planet@{Planet}!setVel@{setVel}}
+\index{setVel@{setVel}!Planet@{Planet}}
+\doxysubsubsection{\texorpdfstring{setVel()}{setVel()}}
+{\footnotesize\ttfamily void Planet\+::set\+Vel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vector2}{Vector2}}}]{new\+\_\+v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set new velocity. Set new velocity for planet. New velocity is not applied until \doxylink{class_planet_a4b7929a78097c80431fd7fe5eb7ba59c}{update\+Vel()} is called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+v} & New velocity \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Planet.\+h\end{DoxyCompactItemize}

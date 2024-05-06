@@ -1,0 +1,41 @@
+\doxysection{Planetary\+System Class Reference}
+\hypertarget{class_planetary_system}{}\label{class_planetary_system}\index{PlanetarySystem@{PlanetarySystem}}
+
+
+Describes a planetary system. Describes a planetary system. Provides ways to add planets and simulate their movement based on initial values and gravity.  
+
+
+
+
+{\ttfamily \#include $<$Planetary\+System.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_planetary_system_a5bc115ae2d4cbdcf297ff909ccb50e22}\label{class_planetary_system_a5bc115ae2d4cbdcf297ff909ccb50e22} 
+{\bfseries Planetary\+System} (double timestep)
+\item 
+\Hypertarget{class_planetary_system_a28bd2c7f3961eeaba9a664a4424d2ae6}\label{class_planetary_system_a28bd2c7f3961eeaba9a664a4424d2ae6} 
+void {\bfseries simulate} ()
+\begin{DoxyCompactList}\small\item\em Simulate next timestep. Updates all the bodies in the system according to their velocities and gravity. Bodies are chunked into 10 chunks and given to 10 async function calls to be processed asyncronously. \end{DoxyCompactList}\item 
+\Hypertarget{class_planetary_system_a4537e9a5c2fab2efafc6e634d152f93e}\label{class_planetary_system_a4537e9a5c2fab2efafc6e634d152f93e} 
+void {\bfseries set\+Timestep} (double timestep)
+\item 
+\Hypertarget{class_planetary_system_accae87f5bd900ebf7ad63047d7702434}\label{class_planetary_system_accae87f5bd900ebf7ad63047d7702434} 
+\mbox{\hyperlink{struct_vector2}{Vector2}} {\bfseries get\+Planet\+Position} (int i)
+\item 
+\Hypertarget{class_planetary_system_a827c113b89754608c40551dcd5a3dee9}\label{class_planetary_system_a827c113b89754608c40551dcd5a3dee9} 
+int {\bfseries get\+Planet\+Count} ()
+\item 
+\Hypertarget{class_planetary_system_a897db6424055a6c432e3c72b286f8277}\label{class_planetary_system_a897db6424055a6c432e3c72b286f8277} 
+void {\bfseries add\+Planet} (\mbox{\hyperlink{class_planet}{Planet}} p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Describes a planetary system. Describes a planetary system. Provides ways to add planets and simulate their movement based on initial values and gravity. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Planetary\+System.\+h\item 
+Planetary\+System.\+cpp\end{DoxyCompactItemize}
