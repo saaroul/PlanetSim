@@ -4,9 +4,10 @@
 #include <string.h>
 #include <chrono>
 #include <ctime>
+#include "SDL_filesystem.h"
 #include "SDL.h"
+#include "SDL_rwops.h"
 #include "SDL_ttf.h"
-
 #include "planets.h"
 #include "PlanetarySystem.h"
 
@@ -15,6 +16,7 @@ https://iq.direct/blog/315-simple-program-to-explain-sdl-rendering.html
 https://stackoverflow.com/questions/38334081/how-to-draw-circles-arcs-and-vector-graphics-in-sdl
 https://codereview.stackexchange.com/questions/234331/modelling-solar-system-runge-kutta-4-n-body-problem
 */
+
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 720;
@@ -34,6 +36,17 @@ Vector2 directions[direction_count];
 
 int main(int argc, char** argv)
 {
+	// Exit
+	auto at_exit = []() {
+		SDL_Quit();
+		TTF_Quit();
+		};
+	const int AT_EXIT_FAILURE = std::atexit(at_exit);
+	if (AT_EXIT_FAILURE)
+	{
+		std::cout << "At exit failed to register";
+		return EXIT_FAILURE;
+	}
 	// Create lookup table for 360 deg unit vectors
 	for (int i = 0; i < direction_count; i++)
 	{
@@ -46,12 +59,17 @@ int main(int argc, char** argv)
 	// retutns zero on success else non-zero 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("error initializing SDL: %s\n", SDL_GetError());
+		return EXIT_FAILURE;
 	}
 	SDL_Window* win = SDL_CreateWindow("Planet Sim", // creates a window 
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		SCREEN_WIDTH, SCREEN_HEIGHT, 0);
-	TTF_Init();
+	if (TTF_Init() != 0)
+	{
+		printf("error initializing TTF");
+		return EXIT_FAILURE;
+	}
 
 	// triggers the program that controls 
 	// your graphics hardware and sets flags 
@@ -61,7 +79,26 @@ int main(int argc, char** argv)
 	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
 
 	// Load a font
-	TTF_Font* font = TTF_OpenFont(R"(C:\Users\oulas\source\repos\PlanetSim\PlanetSim\Consolas.ttf)", 24);
+	// Looks for Consolas.ttf in the build folder.
+	// Change extension to match font you want to use and add it to build folder.
+	char path_name[128];
+	char* root_path = SDL_GetBasePath();
+	const char* extension = "Consolas.ttf";
+
+	if (sizeof(path_name) < strlen(root_path) + 1) { /* +1 is for null character */
+		fprintf(stderr, "Name '%s' is too long\n", root_path);
+		return EXIT_FAILURE;
+	}
+
+	strncpy_s(path_name, root_path, sizeof(path_name));
+	if (sizeof(path_name) < (strlen(path_name) + strlen(extension) + 1)) {
+		fprintf(stderr, "Final size of filename is too long!\n");
+		return EXIT_FAILURE;
+	}
+
+	strncat_s(path_name, extension, (sizeof(path_name) - strlen(path_name)));
+	printf("Filename is %s\n", path_name);
+	TTF_Font* font = TTF_OpenFont(path_name, 24);
 	if (font == NULL) {
 		fprintf(stderr, "error: font not found\n");
 		exit(EXIT_FAILURE);
@@ -71,7 +108,26 @@ int main(int argc, char** argv)
 	// Create planetary system
 	PlanetarySystem system(timestep);
 
+	
 	// Add planets to system
+	// Use comments to control what are included or make your own planets
+	// Units are in SI units (meters, seconds, kilos) although should probably be in 
+	// astronomical unit scales in the future.
+
+	// Normal solar system
+
+	system.addPlanet(Planet("Sun", SolarMass, SolarPos, SolarVel));
+	system.addPlanet(Planet("Mercury", MercuryMass, MercuryPos, MercuryVel));
+	system.addPlanet(Planet("Venus", VenusMass, VenusPos, VenusVel));
+	system.addPlanet(Planet("Earth", EarthMass, EarthPos, EarthVel));
+	system.addPlanet(Planet("Mars", MarsMass, MarsPos, MarsVel));
+	system.addPlanet(Planet("Jupiter", JupiterMass, JupiterPos, JupiterVel));
+	system.addPlanet(Planet("Saturn", SaturnMass, SaturnPos, SaturnVel));
+	system.addPlanet(Planet("Uranus", UranusMass, UranusPos, UranusVel));
+	system.addPlanet(Planet("Neptune", NeptuneMass, NeptunePos, NeptuneVel));
+
+
+	// Solar system with everything having suns mass
 
 	//system.addPlanet(Planet("Sun", SolarMass, SolarPos, SolarVel));
 	//system.addPlanet(Planet("Mercury", SolarMass, MercuryPos, MercuryVel));
@@ -83,27 +139,19 @@ int main(int argc, char** argv)
 	//system.addPlanet(Planet("Uranus", SolarMass, UranusPos, UranusVel));
 	//system.addPlanet(Planet("Neptune", SolarMass, NeptunePos, NeptuneVel));
 
-	system.addPlanet(Planet("Sun", SolarMass, SolarPos, SolarVel));
-	//system.addPlanet(Planet("Mercury", MercuryMass, MercuryPos, MercuryVel));
-	//system.addPlanet(Planet("Venus", VenusMass, VenusPos, VenusVel));
-	//system.addPlanet(Planet("Earth", EarthMass, EarthPos, EarthVel));
-	//system.addPlanet(Planet("Mars", MarsMass, MarsPos, MarsVel));
-	//system.addPlanet(Planet("Jupiter", JupiterMass, JupiterPos, JupiterVel));
-	//system.addPlanet(Planet("Saturn", SaturnMass, SaturnPos, SaturnVel));
-	//system.addPlanet(Planet("Uranus", UranusMass, UranusPos, UranusVel));
-	//system.addPlanet(Planet("Neptune", NeptuneMass, NeptunePos, NeptuneVel));
 
-
-	std::srand(std::time(nullptr));
-	for (int i = 1; i <= 8000; i++)
-	{
-		Vector2 dir = directions[rand() % direction_count];
-		long long dist = std::rand() * 2000000000;
-		Vector2 pos = { dir.x * dist, dir.y * dist };
-		int speed = rand() % 100 * 1000;
-		Vector2 rot = { dir.y * speed, dir.x * -speed };
-		system.addPlanet(Planet("p" + i, MercuryMass, pos, rot));
-	}
+	// Random distribution of planets
+	
+	//std::srand(std::time(nullptr));
+	//for (int i = 1; i <= 8000; i++)
+	//{
+	//	Vector2 dir = directions[rand() % direction_count];
+	//	long long dist = std::rand() * 2000000000;
+	//	Vector2 pos = { dir.x * dist, dir.y * dist };
+	//	int speed = rand() % 100 * 1000;
+	//	Vector2 vel = { dir.y * speed, dir.x * -speed };
+	//	system.addPlanet(Planet("p" + i, MercuryMass, pos, vel));
+	//}
 
 
 	// Text boxes for fps and sim speed
